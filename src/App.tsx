@@ -37,9 +37,9 @@ export const people = [{
 }]
 
 function App() {
-  const [name, setName] = useState('CSMJU')
+  const [name] = useState('CSMJU')
   // massage (คงชื่อตัวแปรเดิมไว้)
-  const [massage, setmassge] = useState(' สอบถามได้ครับ ')
+  const [massage] = useState(' สอบถามได้ครับ ')
   const [count, setCount] = useState(0)
   // 3) true = เขียว, false = แดง
   const status: boolean = false
