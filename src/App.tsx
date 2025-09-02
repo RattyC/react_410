@@ -37,16 +37,13 @@ export const people = [{
 }]
 
 function App() {
-  // name --> show 
   const [name, setName] = useState('CSMJU')
   // massage (คงชื่อตัวแปรเดิมไว้)
   const [massage, setmassge] = useState(' สอบถามได้ครับ ')
   const [count, setCount] = useState(0)
-
   // 3) true = เขียว, false = แดง
   const status: boolean = false
   const statusClass = status ? 'green-txt' : 'red-txt'
-
   // 4–5) state สำหรับขนาดตัวอักษรของ <h1> (ที่แสดง name)
   const [titleSize, setTitleSize] = useState<number>(32)
   const MIN_PX = 16
