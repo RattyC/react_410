@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "installCommand": "cd react-101 && npm ci",
+  "buildCommand": "cd react-101 && npm run build",
+  "outputDirectory": "react-101/dist",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ],
+  "github": {
+    "silent": true
+  }
+}

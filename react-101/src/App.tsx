@@ -1,114 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import GPAList from './gpa'
-
-export const people = [{
-  id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}]
+import TodoListBasic from './TodoListBasic'
+import TodoListWithMeta from './TodoListWithMeta'
+import TodoListRHF from './TodoListRHF'
+import TodoListRHFZod from './TodoListRHFZod'
+import MPDirectory from './assets/mp/MPDirectory'
 
 function App() {
-  const [name] = useState('CSMJU')
-  // massage (คงชื่อตัวแปรเดิมไว้)
-  const [massage] = useState(' สอบถามได้ครับ ')
-  const [count, setCount] = useState(0)
-  // 3) true = เขียว, false = แดง
-  const status: boolean = false
-  const statusClass = status ? 'green-txt' : 'red-txt'
-  // 4–5) state สำหรับขนาดตัวอักษรของ <h1> (ที่แสดง name)
-  const [titleSize, setTitleSize] = useState<number>(32)
-  const MIN_PX = 16
-  const MAX_PX = 80
-
-  const inc = () => {
-    setCount(c => c + 1)
-    setTitleSize(s => Math.min(s + 2, MAX_PX)) // ขยาย h1 ทีละ 2px
-  }
-
-  const dec = () => {
-    setCount(c => Math.max(c - 1, 0))
-    setTitleSize(s => Math.max(s - 2, MIN_PX)) // ย่อ h1 ทีละ 2px
-  }
-
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="bg-white border-b border-[#B0B0B0]">
+        <div className="mx-auto max-w-5xl px-4 py-4">
+          <h1 className="m-0 text-xl font-display">React 101 Playground</h1>
+        </div>
+      </header>
 
-      {/* 3) ใส่คลาสสีตาม status + 4–5) คุมขนาดด้วย state */}
-      <h1
-        className={`status ${statusClass}`}
-        style={{ fontSize: `${titleSize}px` }}
-      >
-        {name}
-      </h1>
+      {/* Content */}
+      <main className="mx-auto max-w-5xl px-4 py-6 space-y-10">
+        {/* MP Directory */}
+        <section>
+          <MPDirectory />
+        </section>
 
-      <h2>{massage}</h2>
-      <h1>Vite + React</h1>
+        {/* React + FORM demos */}
+        <section>
+          <div className="mb-3">
+            <h2 className="text-lg font-semibold m-0">React + FORM</h2>
+            <p className="text-[#666] m-0">ตัวอย่าง 4 แบบ: useState, useState หลายช่อง, React Hook Form, React Hook Form + Zod</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-[#B0B0B0] bg-white p-4">
+              <TodoListBasic />
+            </div>
+            <div className="rounded-xl border border-[#B0B0B0] bg-white p-4">
+              <TodoListWithMeta />
+            </div>
+            <div className="rounded-xl border border-[#B0B0B0] bg-white p-4 md:col-span-2">
+              <TodoListRHF />
+            </div>
+            <div className="rounded-xl border border-[#B0B0B0] bg-white p-4 md:col-span-2">
+              <TodoListRHFZod />
+            </div>
+          </div>
+        </section>
 
-      <div className="card">
-        {/* 4) ปรับปุ่ม ++ ให้ขยายตัวอักษรด้วย */}
-        <button onClick={inc}>
-          Counter ++ (โตตัวอักษร) — count is {count}
-        </button>
-
-        {/* 5) ปุ่มลบให้ย่อขนาดตัวอักษรลง */}
-        <button onClick={dec} style={{ marginLeft: 8 }}>
-          Counter -- (ย่อตัวอักษร)
-        </button>
-
-        <p style={{ marginTop: 8 }}>
-          Font size: <strong>{titleSize}px</strong>
-        </p>
-      </div>
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      {/* GPA Component */}
-      <hr />
-      <GPAList />
-
-    </>
+        {/* GPA */}
+        <section>
+          <div className="mb-3">
+            <h2 className="text-lg font-semibold m-0">GPA Calculator</h2>
+            <p className="text-[#666] m-0">บันทึกรายวิชาและเกรด แล้วคำนวณ GPA</p>
+          </div>
+          <div className="rounded-xl border border-[#B0B0B0] bg-white p-4">
+            <GPAList />
+          </div>
+        </section>
+      </main>
+    </div>
   )
-
 }
 
 export default App
