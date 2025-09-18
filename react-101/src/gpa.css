@@ -1,14 +1,14 @@
 :root {
   --gpa-bg: #ffffff;
-  --gpa-text: #1f2937;
-  --gpa-muted: #6b7280;
-  --gpa-border: #e5e7eb;
-  --gpa-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  --gpa-text: var(--ink);
+  --gpa-muted: var(--muted);
+  --gpa-border: var(--border);
+  --gpa-shadow: 0 10px 30px rgba(10, 20, 16, 0.10);
+  --primary: var(--emerald);
+  --primary-hover: var(--emerald-700);
   --danger: #dc2626;
   --danger-hover: #b91c1c;
-  --ghost-hover: #f3f4f6;
+  --ghost-hover: #f7f7f7;
 }
 
 .gpa-card {
@@ -50,7 +50,7 @@
   outline: none;
   background: #fff;
 }
-.input:focus, .select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+.input:focus, .select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(10, 91, 69, 0.15); }
 
 .btn {
   height: 38px;
@@ -95,9 +95,9 @@
   height: 24px;
   border-radius: 999px;
   font-size: 12px;
-  background: #eef2ff;
-  color: #3730a3;
-  border: 1px solid #e0e7ff;
+  background: #eaf3ef;
+  color: var(--emerald);
+  border: 1px solid #d7e7df;
 }
 .grade-F { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
 
@@ -119,4 +119,3 @@
   .gpa-form .btn { grid-column: 1 / -1; }
   .gpa-card { margin: 16px; padding: 16px; }
 }
-

@@ -1,19 +1,62 @@
 :root {
+  /* Rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+
+  /* Rolex-inspired palette */
+  --emerald: #0a5b45;         /* deep green */
+  --emerald-700: #084c3a;     /* hover */
+  --gold: #c6a15b;            /* soft gold */
+  --cream: #f7f5ed;           /* warm paper */
+  --ink: #1a1f1c;             /* near-black */
+  --muted: #6b7d73;           /* grey-green */
+  --border: #e6e2d3;          /* warm border */
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
-html, body, #root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 
 body {
   margin: 0;
-  background: #F5F5F5;
-  color: #000000;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
 }
 
-/* Utility only if some legacy class is referenced */
-.green-txt { color: #15803D; font-weight: 600; }
+/* Global links & hr */
+a { color: var(--emerald); text-decoration: none; }
+a:hover { text-decoration: underline; }
+hr { border: none; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 24px 0; }
+
+/* Navbar */
+.navbar { background: var(--emerald); color: #fff; border-bottom: 2px solid var(--gold); }
+.navbar-inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+.brand { font-family: var(--font-serif); letter-spacing: 0.5px; font-size: 18px; }
+.nav-links a { color: #fff; opacity: 0.9; margin-left: 16px; }
+.nav-links a:hover { opacity: 1; }
+
+/* Layout */
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+/* Headings */
+h1, h2, h3 { font-family: var(--font-serif); margin: 0.2em 0; }
+.subtitle { color: var(--muted); font-weight: 500; }
+
+/* Buttons (shared) */
+button, .btn { height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+.btn-primary, button.btn-primary { background: var(--emerald); color: #fff; border-color: var(--emerald); }
+.btn-primary:hover { background: var(--emerald-700); border-color: var(--emerald-700); }
+.btn-ghost, button.btn-ghost { background: transparent; color: var(--emerald); border-color: var(--border); }
+.btn-ghost:hover { background: #fff; }
+
+/* Card */
+.card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px; box-shadow: 0 6px 24px rgba(10, 20, 16, 0.06); }
+
+/* Utilities retained */
+.green-txt { color: #0b7a59; font-weight: 600; }
 .red-txt   { color: #B91C1C; font-weight: 600; }

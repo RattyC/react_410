@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --root react-101",
-    "build": "bash -lc 'cd react-101 && tsc -b && vite build'",
+    "dev": "vite react-101",
+    "build": "cd react-101 && tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview --root react-101"
+    "preview": "vite preview react-101"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

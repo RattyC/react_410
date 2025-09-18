@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import anutin1 from '../anutin-1.svg'
-import anutin2 from '../anutin-2.svg'
 
 const MemberSchema = z.object({
   title: z.string().min(1, 'กรุณาเลือกคำนำหน้า'),
@@ -28,8 +27,8 @@ type FormValues = MemberBase
 const TITLES = ['นาย', 'นาง', 'นางสาว', 'อื่นๆ']
 
 export default function MPDirectory() {
-  const externalAnutin = 'https://commons.wikimedia.org/wiki/Special:FilePath/Anutin_Charnvirakul_-_2023_(52638148766)_(cropped).jpg?width=640'
-  const seedPhotos = [externalAnutin, anutin1 as string, anutin2 as string]
+  // ใช้รูปเดียวตามคำขอ
+  const seedPhotos = [anutin1 as string]
   const [members, setMembers] = useState<Member[]>([{
     id: 'seed-anutin',
     title: 'นาย',
@@ -114,7 +113,8 @@ export default function MPDirectory() {
       achievements: data.achievements || '',
       photoUrls: [],
     }
-    setMembers((prev) => [newMember, ...prev])
+    // จำกัดให้มีข้อมูลได้เพียง 1 รายชื่อ: แทนที่ของเดิม
+    setMembers([newMember])
     reset()
   }
 
@@ -132,14 +132,12 @@ export default function MPDirectory() {
       </header>
 
       {/* List first: minimal neutral cards */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 gap-6">
         {members.map((m) => (
           <article key={m.id} className="rounded-xl border border-[#B0B0B0] bg-[#FFFFFF] overflow-hidden transition-shadow hover:shadow-sm">
             {m.photoUrls.length > 0 ? (
-              <div className="grid grid-cols-2 gap-1 p-2 bg-[#F5F5F5]">
-                {m.photoUrls.slice(0, 2).map((u, idx) => (
-                  <img key={idx} src={u} className="h-28 w-full object-cover rounded-lg border border-[#B0B0B0]" />
-                ))}
+              <div className="p-2 bg-[#F5F5F5]">
+                <img src={m.photoUrls[0]} className="h-40 w-full object-cover rounded-lg border border-[#B0B0B0]" />
               </div>
             ) : (
               <div className="p-6 bg-[#F5F5F5] border-b border-[#B0B0B0] text-center text-[#B0B0B0]">ไม่มีรูปภาพ</div>
